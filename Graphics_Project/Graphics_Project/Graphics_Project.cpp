@@ -82,16 +82,17 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 ///trees///
 glEnable(GL_LIGHTING);
-ChangeLightColor(0.0f,1.0f,0.0f);
 tree.pos.x = 8;
 tree.pos.z = 20;
-tree.scale = 0.002; 
+tree.scale = 0.02; 
+tree.pos.y=1;
 tree.Draw();
 
-//tree.pos.x = -10;
-//tree.pos.z = 20;
-//tree.scale = 0.02;
-//tree.Draw();
+tree.pos.x = -10;
+tree.pos.z = 20;
+tree.scale = 0.02;
+tree.pos.y=1;
+tree.Draw();
 
 
 
@@ -218,6 +219,7 @@ billiard.Draw();
 
 glEnable(GL_LIGHTING);
 ChangeLightColor(0.0f,0.0f,0.5f);
+house.pos.y=1;
 //house.rot.y = 450; 
 house.scale=0.03;
 house.Draw();
@@ -337,6 +339,26 @@ void UseSurfaceMaterials()
 	GLfloat shininess[] = {96.0f};
 	glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
 }
+void CreateLightSource()
+{
+	// Enable Lighting for this OpenGL Program
+	glEnable(GL_LIGHTING);
+	// Enable Light Source number 0
+	// OpengL has 8 light sources
+	glEnable(GL_LIGHT0);
+	// Define Light source 0 ambient light
+	GLfloat ambient[]={0.1f, 0.1f, 0.1, 1.0f};
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	// Define Light source 0 diffuse light
+	GLfloat diffuse[]={0.4f, 0.4f, 0.4f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	// Define Light source 0 Specular light
+	GLfloat specular[]={1.0f, 1.0f, 1.0f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	// Finally, define light source 0 position in World Space
+	GLfloat light_position[] = {2.0f, 2.0f, 2.0f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+}
 
 void main(int argc, char **argv)
 
@@ -345,6 +367,8 @@ void main(int argc, char **argv)
 glutInit(&argc, argv);
 
 glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGB);
+
+CreateLightSource();
 
 glutInitWindowPosition(100, 100);
 
@@ -404,8 +428,8 @@ gluPerspective(45.0f, 1280/720, 0.1f, 100.0f);
 
 
 
-house.Load("Building.3DS");
-tree.Load("Christmas tree N260410.3ds");
+house.Load("House3.3DS");
+tree.Load("elm.3ds");
 //sofa.Load("sofa.3DS");
 //billiard.Load("billiard.3ds");
 //car.Load("car.3ds");
