@@ -24,6 +24,7 @@
 #pragma comment(lib, "GLAUX.lib")
 
 MModel_3DS tree;
+MModel_3DS tree2;
 MModel_3DS house;
 MModel_3DS grass;
 MModel_3DS sofa;
@@ -183,11 +184,12 @@ desk.rot.y=90.0f;
 desk.scale=0.02;
 desk.Draw();
 
-ChangeLightColor(0.0f,0.0f,1.0f);
-car.pos.x= -10;
-car.pos.z=16;
-car.rot.y = 45;
-car.scale=0.03;
+ChangeLightColor(1.0f,1,0);
+car.pos.x= 5;
+car.pos.z=8;
+car.pos.y=2;
+car.scale=0.05;
+car.rot.y=90;
 car.Draw();
 
 //GLfloat shininess [] = {50};
@@ -339,6 +341,7 @@ void UseSurfaceMaterials()
 	GLfloat shininess[] = {96.0f};
 	glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
 }
+
 void CreateLightSource()
 {
 	// Enable Lighting for this OpenGL Program
@@ -356,7 +359,8 @@ void CreateLightSource()
 	GLfloat specular[]={1.0f, 1.0f, 1.0f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	// Finally, define light source 0 position in World Space
-	GLfloat light_position[] = {2.0f, 2.0f, 2.0f, 1.0f};
+	//GLfloat light_position[] = {2.0f, 2.0f, 2.0f, 1.0f};
+	GLfloat light_position[] = {cameraLocation.x, cameraLocation.y, cameraLocation.z, 1.0f};
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 }
 
@@ -426,13 +430,16 @@ glLoadIdentity();
 
 gluPerspective(45.0f, 1280/720, 0.1f, 100.0f);
 
+glEnable(GL_DEPTH_TEST);
+CreateLightSource();
+glClearColor(0.0,0.0,0.0,0.0);
 
 
 house.Load("House3.3DS");
-tree.Load("elm.3ds");
+//tree.Load("Christmas tree N260410.3ds");
 //sofa.Load("sofa.3DS");
 //billiard.Load("billiard.3ds");
-//car.Load("car.3ds");
+car.Load("Car Lamborghini gallardo 2005 N240211.3DS");
 //lamp.Load("lamp2.3DS");
 //desk.Load("desk.3ds");
 //candle.Load("candlestick.3DS");
@@ -442,8 +449,10 @@ tree.Load("elm.3ds");
 //guitar.Load("guitar.3ds");
 //piano.Load("piano1.3DS");
 grass.Load("Grass06.3DS");
+tree2.Load("CL20a.3ds");
 //tvtable.Load("reciever.3DS");
 //vase.Load("vase.3DS");
+glMatrixMode(GL_MODELVIEW);
 glutMainLoop();
 
 }
