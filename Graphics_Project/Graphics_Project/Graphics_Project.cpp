@@ -40,6 +40,13 @@ MModel_3DS tvtable;
 MModel_3DS piano;
 MModel_3DS guitar;
 MModel_3DS clock;
+MModel_3DS wheel;
+MModel_3DS boots;
+MModel_3DS ball;
+MModel_3DS snooker;
+MModel_3DS swimmingpool;
+MModel_3DS frog;
+MModel_3DS motorcycle;
 //MModel_3DS diningtable;
 
 class Position{
@@ -95,6 +102,13 @@ tree.scale = 0.02;
 tree.pos.y=1;
 tree.Draw();
 
+//ball
+glEnable(GL_LIGHTING);
+ball.pos.x = 8;
+ball.pos.z = 20;
+ball.scale = 0.02; 
+ball.pos.y=1;
+ball.Draw();
 
 
 ////sofas el gamb el lamp///
@@ -372,7 +386,7 @@ glutInit(&argc, argv);
 
 glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGB);
 
-CreateLightSource();
+//CreateLightSource();
 
 glutInitWindowPosition(100, 100);
 
@@ -432,7 +446,7 @@ gluPerspective(45.0f, 1280/720, 0.1f, 100.0f);
 
 glEnable(GL_DEPTH_TEST);
 CreateLightSource();
-glClearColor(0.0,0.0,0.0,0.0);
+glClearColor(0.9,0.9,0.9,0.0);
 
 
 house.Load("House3.3DS");
@@ -452,6 +466,15 @@ grass.Load("Grass06.3DS");
 tree2.Load("CL20a.3ds");
 //tvtable.Load("reciever.3DS");
 //vase.Load("vase.3DS");
+
+wheel.Load("wheel.3ds");
+boots.Load("boots.3ds");
+ball.Load("ball.3ds");
+snooker.Load("snooker.3ds");
+swimmingpool.Load("swimmingpool.3ds");
+frog.Load("frog.3ds");
+motorcycle.Load("motorcycle.3ds");
+
 glMatrixMode(GL_MODELVIEW);
 glutMainLoop();
 
