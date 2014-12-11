@@ -81,16 +81,17 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 ///trees///
-glDisable(GL_LIGHTING);
+glEnable(GL_LIGHTING);
+ChangeLightColor(0.0f,1.0f,0.0f);
 tree.pos.x = 8;
 tree.pos.z = 20;
-tree.scale = 0.02; 
+tree.scale = 0.002; 
 tree.Draw();
 
-tree.pos.x = -10;
-tree.pos.z = 20;
-tree.scale = 0.02;
-tree.Draw();
+//tree.pos.x = -10;
+//tree.pos.z = 20;
+//tree.scale = 0.02;
+//tree.Draw();
 
 
 
@@ -218,50 +219,24 @@ billiard.Draw();
 glEnable(GL_LIGHTING);
 ChangeLightColor(0.0f,0.0f,0.5f);
 //house.rot.y = 450; 
-house.scale=0.04;
+house.scale=0.03;
 house.Draw();
 
 
 
 ///////GRASS
 
-for(int i = 0; i<18; i++)
-{
-
-	
-ChangeLightColor(1.0f,0.0f,0.0f);
-grass.pos.x=-11.5;
-grass.pos.z=20+(-2*i);
-grass.scale = 0.2;
+for(int x = -10;x<27;x+=4){
+for(int i = 0; i<19; i++)
+{	
+ChangeLightColor(0.0f,1.0f,0.0f);
+grass.pos.x=x;
+if(x<15 || (x<19 && x>15 && i>1) || (x>19 && x<21 && i>2)|| (x>21 && x<23 && i>2) ||(x>23 && x<25 && i>3)||(x>25 && x<27 && i>4))
+	grass.pos.z=28+(-2*i);
+grass.scale = 0.003;
 grass.Draw();
 }
-
-for(int j=0; j<18; j++)
-{
-	
-grass.pos.x=-5;
-grass.pos.z=20+(-2*j);
-grass.scale = 0.2;
-grass.Draw();
 }
-for(int j=0; j<18; j++)
-{
-	
-grass.pos.x=1.5;
-grass.pos.z=20+(-2*j);
-grass.scale = 0.2;
-grass.Draw();
-}
-
-for(int j=0; j<18; j++)
-{
-	
-grass.pos.x=8;
-grass.pos.z=20+(-2*j);
-grass.scale = 0.2;
-grass.Draw();
-}
-
 
 //if(cameraLocation.y >=3.5)
 //{
@@ -323,13 +298,13 @@ break;
 
 case GLUT_KEY_F1:
 
-cameraLocation.y -= 0.1;
+cameraLocation.y -= 0.5;
 
 break;
 
 case GLUT_KEY_F2:
 
-cameraLocation.y += 0.1;
+cameraLocation.y += 0.5;
 
 break;
 
@@ -347,6 +322,20 @@ break;
 
 }
 
+}
+void UseSurfaceMaterials()
+{
+	// Enable Material Tracking
+	glEnable(GL_COLOR_MATERIAL);
+	// Set Material Properties which will be assigned by glColor
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	// Set Material's Specular Color
+	// Will be applied to all objects
+	GLfloat specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	glMaterialfv(GL_FRONT, GL_SPECULAR, specular);
+	// Set Material's Shine value (0->128)
+	GLfloat shininess[] = {96.0f};
+	glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
 }
 
 void main(int argc, char **argv)
@@ -375,6 +364,7 @@ glEnable(GL_DEPTH_TEST);
 
 glEnable(GL_NORMALIZE);
 
+ UseSurfaceMaterials();
 //set the light source properties
 
 
@@ -414,22 +404,22 @@ gluPerspective(45.0f, 1280/720, 0.1f, 100.0f);
 
 
 
-house.Load("House3.3DS");
-tree.Load("elm.3ds");
-sofa.Load("sofa.3DS");
-billiard.Load("billiard.3ds");
-car.Load("car.3ds");
-lamp.Load("lamp2.3DS");
-desk.Load("desk.3ds");
-candle.Load("candlestick.3DS");
-tv.Load("tv.3DS");
-bed.Load("bed.3DS");
-clock.Load("clock.3ds");
-guitar.Load("guitar.3ds");
-piano.Load("piano1.3DS");
-grass.Load("grass.3ds");
-tvtable.Load("reciever.3DS");
-vase.Load("vase.3DS");
+house.Load("Building.3DS");
+tree.Load("Christmas tree N260410.3ds");
+//sofa.Load("sofa.3DS");
+//billiard.Load("billiard.3ds");
+//car.Load("car.3ds");
+//lamp.Load("lamp2.3DS");
+//desk.Load("desk.3ds");
+//candle.Load("candlestick.3DS");
+//tv.Load("tv.3DS");
+//bed.Load("bed.3DS");
+//clock.Load("clock.3ds");
+//guitar.Load("guitar.3ds");
+//piano.Load("piano1.3DS");
+grass.Load("Grass06.3DS");
+//tvtable.Load("reciever.3DS");
+//vase.Load("vase.3DS");
 glutMainLoop();
 
 }
