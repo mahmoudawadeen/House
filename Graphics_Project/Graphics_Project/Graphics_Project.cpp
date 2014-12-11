@@ -24,7 +24,6 @@
 #pragma comment(lib, "GLAUX.lib")
 
 MModel_3DS tree;
-MModel_3DS tree2;
 MModel_3DS house;
 MModel_3DS grass;
 MModel_3DS sofa;
@@ -83,14 +82,14 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 ///trees///
 glEnable(GL_LIGHTING);
-tree.pos.x = 8;
-tree.pos.z = 20;
-tree.scale = 0.02; 
+tree.pos.x = -10;
+tree.pos.z = 28;
+/*tree.scale = 0.02;*/ 
 tree.pos.y=1;
 tree.Draw();
 
-tree.pos.x = -10;
-tree.pos.z = 20;
+tree.pos.x = 25;
+tree.pos.z = 28;
 tree.scale = 0.02;
 tree.pos.y=1;
 tree.Draw();
@@ -185,11 +184,11 @@ desk.scale=0.02;
 desk.Draw();
 
 ChangeLightColor(1.0f,1,0);
-car.pos.x= 5;
-car.pos.z=8;
+car.pos.x= 18;
+car.pos.z=10;
 car.pos.y=2;
-car.scale=0.05;
-car.rot.y=90;
+car.scale=0.001;
+//car.rot.y=90;
 car.Draw();
 
 //GLfloat shininess [] = {50};
@@ -222,8 +221,9 @@ billiard.Draw();
 glEnable(GL_LIGHTING);
 ChangeLightColor(0.0f,0.0f,0.5f);
 house.pos.y=1;
+house.pos.x=8;
 //house.rot.y = 450; 
-house.scale=0.03;
+house.scale=0.05;
 house.Draw();
 
 
@@ -235,7 +235,7 @@ for(int i = 0; i<19; i++)
 {	
 ChangeLightColor(0.0f,1.0f,0.0f);
 grass.pos.x=x;
-if(x<15 || (x<19 && x>15 && i>1) || (x>19 && x<21 && i>2)|| (x>21 && x<23 && i>2) ||(x>23 && x<25 && i>3)||(x>25 && x<27 && i>4))
+//if(x<15 || (x<19 && x>15 && i>1) || (x>19 && x<21 && i>2)|| (x>21 && x<23 && i>2) ||(x>23 && x<25 && i>3)||(x>25 && x<27 && i>4))
 	grass.pos.z=28+(-2*i);
 grass.scale = 0.003;
 grass.Draw();
@@ -436,10 +436,10 @@ glClearColor(0.0,0.0,0.0,0.0);
 
 
 house.Load("House3.3DS");
-//tree.Load("Christmas tree N260410.3ds");
-//sofa.Load("sofa.3DS");
+tree.Load("elm.3ds");
+//sofa.Load("Car Lamborghini gallardo 2005 N240211.3DS");
 //billiard.Load("billiard.3ds");
-car.Load("Car Lamborghini gallardo 2005 N240211.3DS");
+car.Load("Car saturn ls N300314.3DS");
 //lamp.Load("lamp2.3DS");
 //desk.Load("desk.3ds");
 //candle.Load("candlestick.3DS");
@@ -449,7 +449,6 @@ car.Load("Car Lamborghini gallardo 2005 N240211.3DS");
 //guitar.Load("guitar.3ds");
 //piano.Load("piano1.3DS");
 grass.Load("Grass06.3DS");
-tree2.Load("CL20a.3ds");
 //tvtable.Load("reciever.3DS");
 //vase.Load("vase.3DS");
 glMatrixMode(GL_MODELVIEW);
