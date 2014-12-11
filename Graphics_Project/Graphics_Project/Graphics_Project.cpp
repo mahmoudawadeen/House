@@ -37,6 +37,12 @@ MModel_3DS vase;
 MModel_3DS tablefortv;
 MModel_3DS guitar;
 MModel_3DS clock;
+MModel_3DS interior;
+MModel_3DS dolap;
+MModel_3DS srreer;
+MModel_3DS telfaz;
+MModel_3DS knba;
+MModel_3DS tv1;
 MModel_3DS wheel;
 MModel_3DS boots;
 MModel_3DS ball;
@@ -217,6 +223,51 @@ car.pos.y=2;
 car.scale=0.001;
 //car.rot.y=90;
 car.Draw();
+/////////////////////////////////////
+//Dolap
+ChangeLightColor(1,1,1);
+dolap.pos.x= 5;
+dolap.pos.z= -3;
+dolap.pos.y=2;
+dolap.scale=0.005;
+dolap.rot.y=90;
+dolap.Draw();
+//srreer
+ChangeLightColor(1.0f,1,1);
+srreer.pos.x= 9;
+srreer.pos.z= 1;
+srreer.pos.y= 3;
+srreer.scale=0.005;
+srreer.rot.y=-90;
+srreer.Draw();
+
+//telfaz
+ChangeLightColor(1.0f,1,1);
+telfaz.pos.x= -4;
+telfaz.pos.z= 3;
+telfaz.pos.y= 2;
+telfaz.scale=0.005;
+//telfaz.rot.y=90;
+telfaz.Draw();
+
+//knba
+ChangeLightColor(1.0f,0,0);
+knba.pos.x= 3;
+knba.pos.z= 3;
+knba.pos.y= 2;
+knba.scale=0.002;
+knba.rot.y=-90;
+knba.Draw();
+
+//tv1
+ChangeLightColor(0.0f,0,0);
+tv1.pos.x= -4;
+tv1.pos.z= 3;
+tv1.pos.y= 2.6;
+tv1.scale=0.05;
+tv1.rot.y=180;
+tv1.Draw();
+
 
 //GLfloat shininess [] = {50};
 //glMaterialfv(GL_FRONT,GL_SHININESS,shininess);
@@ -469,6 +520,7 @@ tree.Load("elm.3ds");
 //sofa.Load("DES.3ds");
 //billiard.Load("billiard.3ds");
 car.Load("Car saturn ls N300314.3DS");
+//car.Load("Wardrobe N111014.3DS");
 //lamp.Load("lamp2.3DS");
 bed.Load("bed.3ds");
 //candle.Load("candlestick.3DS");
@@ -479,6 +531,12 @@ thetv.Load("tv.3DS");
 roompiano.Load("piano1.3DS");
 grass.Load("Grass06.3DS");
 tablefortv.Load("reciever.3DS");
+tv1.Load("tv.3DS");
+dolap.Load("Wardrobe N111014.3DS");
+srreer.Load("Bed Cantori Klimt N220814.3DS");
+telfaz.Load("TV stand Gwinner Casale N220814.3DS");
+knba.Load("Sofa N221014.3DS");
+//tvtable.Load("reciever.3DS");
 //vase.Load("vase.3DS");
 
 //wheel.Load("wheel.3ds");
