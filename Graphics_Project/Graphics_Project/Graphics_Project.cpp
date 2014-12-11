@@ -356,7 +356,8 @@ void CreateLightSource()
 	GLfloat specular[]={1.0f, 1.0f, 1.0f, 1.0f};
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	// Finally, define light source 0 position in World Space
-	GLfloat light_position[] = {2.0f, 2.0f, 2.0f, 1.0f};
+	//GLfloat light_position[] = {2.0f, 2.0f, 2.0f, 1.0f};
+	GLfloat light_position[] = {cameraLocation.x, cameraLocation.y, cameraLocation.z, 1.0f};
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 }
 
