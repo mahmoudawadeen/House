@@ -24,6 +24,7 @@
 #pragma comment(lib, "GLAUX.lib")
 
 MModel_3DS tree;
+MModel_3DS tree2;
 MModel_3DS house;
 MModel_3DS grass;
 MModel_3DS sofa;
@@ -338,6 +339,27 @@ void UseSurfaceMaterials()
 	glMaterialfv(GL_FRONT, GL_SHININESS, shininess);
 }
 
+void CreateLightSource()
+{
+	// Enable Lighting for this OpenGL Program
+	glEnable(GL_LIGHTING);
+	// Enable Light Source number 0
+	// OpengL has 8 light sources
+	glEnable(GL_LIGHT0);
+	// Define Light source 0 ambient light
+	GLfloat ambient[]={0.1f, 0.1f, 0.1, 1.0f};
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	// Define Light source 0 diffuse light
+	GLfloat diffuse[]={0.4f, 0.4f, 0.4f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	// Define Light source 0 Specular light
+	GLfloat specular[]={1.0f, 1.0f, 1.0f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	// Finally, define light source 0 position in World Space
+	GLfloat light_position[] = {2.0f, 2.0f, 2.0f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+}
+
 void main(int argc, char **argv)
 
 {
@@ -402,9 +424,12 @@ glLoadIdentity();
 
 gluPerspective(45.0f, 1280/720, 0.1f, 100.0f);
 
+glEnable(GL_DEPTH_TEST);
+CreateLightSource();
+glClearColor(0.0,0.0,0.0,0.0);
 
 
-house.Load("Building.3DS");
+house.Load("House3.3DS");
 tree.Load("Christmas tree N260410.3ds");
 //sofa.Load("sofa.3DS");
 //billiard.Load("billiard.3ds");
@@ -418,8 +443,10 @@ tree.Load("Christmas tree N260410.3ds");
 //guitar.Load("guitar.3ds");
 //piano.Load("piano1.3DS");
 grass.Load("Grass06.3DS");
+tree2.Load("CL20a.3ds");
 //tvtable.Load("reciever.3DS");
 //vase.Load("vase.3DS");
+glMatrixMode(GL_MODELVIEW);
 glutMainLoop();
 
 }
