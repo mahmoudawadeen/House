@@ -31,17 +31,17 @@ MModel_3DS billiard;
 MModel_3DS car;
 MModel_3DS desk;
 MModel_3DS lamp;
-MModel_3DS tv;
 MModel_3DS bed;
 MModel_3DS candle;
 MModel_3DS vase;
-MModel_3DS tvtable;
-MModel_3DS piano;
+MModel_3DS tablefortv;
 MModel_3DS guitar;
 MModel_3DS clock;
 MModel_3DS wheel;
 MModel_3DS boots;
 MModel_3DS ball;
+MModel_3DS roompiano;
+MModel_3DS thetv;
 MModel_3DS snooker;
 MModel_3DS swimmingpool;
 MModel_3DS frog;
@@ -111,22 +111,22 @@ ball.Draw();
 
 
 ////sofas el gamb el lamp///
-glEnable(GL_LIGHTING);
-ChangeLightColor(0.0f,0.0f,1.0f);
-sofa.pos.x = -1.65;
-sofa.pos.z = 2;
-sofa.pos.y=1;
-sofa.rot.y = 30.0f;
-sofa.scale = 0.002;
-sofa.Draw();
+//glEnable(GL_LIGHTING);
+//ChangeLightColor(0.0f,0.0f,1.0f);
+//sofa.pos.x = -1.65;
+//sofa.pos.z = 2;
+//sofa.pos.y=20;
+//sofa.rot.y = 30.0f;
+//sofa.scale = 0.2;
+//sofa.Draw();
 
 /// window sofa///
-sofa.pos.x = 0.65;
-sofa.pos.z = 4;
-sofa.pos.y=1;
-sofa.rot.y = 120.0f;
-sofa.scale = 0.002;
-sofa.Draw();
+//sofa.pos.x = 0.65;
+//sofa.pos.z = 4;
+//sofa.pos.y=20;
+//sofa.rot.y = 120.0f;
+//sofa.scale = 0.2;
+//sofa.Draw();
 
 
 ////lamp next to the sofa
@@ -137,13 +137,6 @@ lamp.pos.y=1;
 lamp.scale = 0.001;
 lamp.Draw();
 
-ChangeLightColor(0.0f,0.0f,0.0f);
-tv.rot.y = -90;
-tv.scale = 0.04;
-tv.pos.y = 2;
-tv.pos.x = -2.5;
-tv.pos.z = -5.75;
-tv.Draw();
 
 ////////////CLOCK////////////
 clock.scale = 0.005;
@@ -153,19 +146,21 @@ clock.pos.z = -5.75;
 clock.Draw();
 
 
-tvtable.scale = 0.005;
-tvtable.pos.y = 1;
-tvtable.pos.x = -2.5;
-tvtable.pos.z = -5.75;
-tvtable.Draw();
+tablefortv.scale = 0.005;
+tablefortv.pos.y = 2;
+tablefortv.pos.x = -4;
+tablefortv.pos.z = -10;
+tablefortv.rot.y = 90;
+tablefortv.Draw();
 
 
 //////////////BED///////
 glDisable(GL_LIGHTING);
-bed.scale =0.02;
-bed.pos.y = 1;
-bed.pos.x = 3.45;
-bed.pos.z = 4;
+bed.scale =0.05;
+bed.pos.y = 2;
+bed.pos.x = 8;
+bed.pos.z = -8;
+bed.rot.y = 180;
 bed.Draw();
 
 //CANDLE NEXT TO THE TV////////
@@ -182,6 +177,16 @@ vase.pos.x = 4.75;
 vase.pos.z = 4;
 vase.Draw();
 
+
+
+ChangeLightColor(0.0f,0.0f,0.0f);
+thetv.rot.y = 180;
+thetv.scale = 0.05;
+thetv.pos.y = 2.5;
+thetv.pos.x = -4;
+thetv.pos.z = -10;
+thetv.Draw();
+
 /*diningtable.pos.y = 1;
 diningtable.pos.x= -6.5;
 diningtable.pos.z=-5;
@@ -190,12 +195,20 @@ diningtable.Draw();*/
 
 glEnable(GL_LIGHTING);
 ChangeLightColor(0.0f,1.0f,1.0f);
-desk.pos.x = 0.65;
-desk.pos.z = 2;
-desk.pos.y=1;
+desk.pos.x = 8;
+desk.pos.z = -9;
+desk.pos.y=20;
 desk.rot.y=90.0f;
 desk.scale=0.02;
 desk.Draw();
+
+ChangeLightColor(0.0f,1.0f,1.0f);
+sofa.pos.x = 0.65;
+sofa.pos.z = -7;
+sofa.pos.y=4;
+sofa.rot.y=90.0f;
+sofa.scale=0.02;
+sofa.Draw();
 
 ChangeLightColor(1.0f,1,0);
 car.pos.x= 18;
@@ -208,11 +221,12 @@ car.Draw();
 //GLfloat shininess [] = {50};
 //glMaterialfv(GL_FRONT,GL_SHININESS,shininess);
 ChangeLightColor(0.5f,0.3f,0.3f);
-piano.pos.x= -8;
-piano.pos.z=-1;
-piano.pos.y = 1;
-piano.scale=0.003;
-piano.Draw();
+roompiano.pos.x= -3;
+roompiano.pos.z=-6;
+roompiano.pos.y = 2;
+roompiano.scale=0.003;
+roompiano.rot.y = 225;
+roompiano.Draw();
 
 ChangeLightColor(0.0f,0.0f,0.0f);
 guitar.pos.x= -8;
@@ -452,28 +466,28 @@ glClearColor(0.9,0.9,0.9,0.0);
 
 house.Load("House3.3DS");
 tree.Load("elm.3ds");
-//sofa.Load("Car Lamborghini gallardo 2005 N240211.3DS");
+//sofa.Load("DES.3ds");
 //billiard.Load("billiard.3ds");
 car.Load("Car saturn ls N300314.3DS");
 //lamp.Load("lamp2.3DS");
-//desk.Load("desk.3ds");
+bed.Load("bed.3ds");
 //candle.Load("candlestick.3DS");
-//tv.Load("tv.3DS");
+thetv.Load("tv.3DS");
 //bed.Load("bed.3DS");
 //clock.Load("clock.3ds");
 //guitar.Load("guitar.3ds");
-//piano.Load("piano1.3DS");
+roompiano.Load("piano1.3DS");
 grass.Load("Grass06.3DS");
-//tvtable.Load("reciever.3DS");
+tablefortv.Load("reciever.3DS");
 //vase.Load("vase.3DS");
 
-wheel.Load("wheel.3ds");
-boots.Load("boots.3ds");
-ball.Load("ball.3ds");
-snooker.Load("snooker.3ds");
-swimmingpool.Load("swimmingpool.3ds");
-frog.Load("frog.3ds");
-motorcycle.Load("motorcycle.3ds");
+//wheel.Load("wheel.3ds");
+//boots.Load("boots.3ds");
+//ball.Load("ball.3ds");
+//snooker.Load("snooker.3ds");
+//swimmingpool.Load("swimmingpool.3ds");
+//frog.Load("frog.3ds");
+//motorcycle.Load("motorcycle.3ds");
 
 glMatrixMode(GL_MODELVIEW);
 glutMainLoop();
