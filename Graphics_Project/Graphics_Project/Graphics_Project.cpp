@@ -56,7 +56,10 @@ boolean rightBird = true;
 double bird2XTranslate = -2;
 double bird2Rotate = 90;
 boolean rightBird2 = true;
- 
+
+double ballXTranslate = 2;
+double ballZTranslate = 27;
+boolean moveBall = false;
  
 class Position{
  
@@ -132,8 +135,18 @@ bench.Draw();
  
 glEnable(GL_LIGHTING);
 ChangeLightColor(1.0f,0.0f,0.0f);
-ball.pos.x = 7;
-ball.pos.z = 23;
+ball.pos.x = ballXTranslate;
+ball.pos.z = ballZTranslate;
+if ((cameraLocation.x >= -1 && cameraLocation.x <= 1) && (cameraLocation.z >= 40 &&  cameraLocation.z <= 42)) {
+	moveBall = true;
+}
+if(moveBall){
+	ballXTranslate += 0.15;
+	ballZTranslate -= 0.2;
+	if(ballZTranslate <= 18) {
+		moveBall = false;
+	}
+}
 ball.scale = 0.008;
 ball.pos.y=1.5;
 ball.Draw();
