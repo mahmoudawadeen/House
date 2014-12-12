@@ -30,23 +30,26 @@ MModel_3DS sofa;
 MModel_3DS billiard;
 MModel_3DS car;
 MModel_3DS desk;
-MModel_3DS lamp;
+MModel_3DS cone;
 MModel_3DS tv;
 MModel_3DS bed;
-MModel_3DS candle;
-MModel_3DS vase;
+MModel_3DS bird2;
+MModel_3DS bird;
 MModel_3DS tvtable;
 MModel_3DS piano;
-MModel_3DS guitar;
+MModel_3DS cone2;
 MModel_3DS clock;
 MModel_3DS wheel;
-MModel_3DS boots;
+MModel_3DS bench;
 MModel_3DS ball;
-MModel_3DS snooker;
-MModel_3DS swimmingpool;
-MModel_3DS frog;
-MModel_3DS motorcycle;
-//MModel_3DS diningtable;
+MModel_3DS trash;
+
+double birdXTranslate = 0;
+double birdRotate = 90;
+boolean rightBird = true;
+double bird2XTranslate = -2;
+double bird2Rotate = 90;
+boolean rightBird2 = true;
 
 class Position{
 
@@ -101,13 +104,107 @@ tree.scale = 0.02;
 tree.pos.y=1;
 tree.Draw();
 
-//ball
+//bench
 glEnable(GL_LIGHTING);
-ball.pos.x = 8;
-ball.pos.z = 20;
-ball.scale = 0.02; 
-ball.pos.y=1;
+ChangeLightColor(1.0f,1.0f,1.0f);
+bench.pos.x = -9;
+bench.pos.z = 20;
+bench.scale = 0.01;
+bench.rot.y = 90;
+bench.pos.y=1;
+bench.Draw();
+
+glEnable(GL_LIGHTING);
+ChangeLightColor(1.0f,1.0f,1.0f);
+bench.pos.x = -6;
+bench.pos.z = 20;
+bench.scale = 0.01;
+bench.rot.y = 270;
+bench.pos.y=1;
+bench.Draw();
+
+glEnable(GL_LIGHTING);
+ChangeLightColor(1.0f,0.0f,0.0f);
+ball.pos.x = 7;
+ball.pos.z = 23;
+ball.scale = 0.008;
+ball.pos.y=1.5;
 ball.Draw();
+
+glEnable(GL_LIGHTING);
+ChangeLightColor(1.0f,1.0f,1.0f);
+trash.pos.x = -8;
+trash.pos.z = 28;
+trash.scale = 0.003;
+trash.pos.y=1;
+trash.Draw();
+
+glEnable(GL_LIGHTING);
+ChangeLightColor(1.0f,0.35f,0.0f);
+cone.pos.x = 15;
+cone.pos.z = 28;
+cone.scale = 0.05;
+cone.pos.y=1;
+cone.Draw();
+
+glEnable(GL_LIGHTING);
+ChangeLightColor(1.0f,0.35f,0.0f);
+cone2.pos.x = 16;
+cone2.pos.z = 28;
+cone2.scale = 0.05;
+cone2.rot.x = 90;
+cone2.pos.y=1;
+cone2.Draw();
+
+glEnable(GL_LIGHTING);
+ChangeLightColor(1.0f,0.35f,0.0f);
+bird.rot.y = birdRotate;
+if(rightBird){
+	birdXTranslate+=0.3;
+	bird.pos.x = birdXTranslate;
+	if(bird.pos.x >= 15){
+		bird.rot.y = -bird.rot.y;
+		rightBird = false;
+	}
+}
+if(!rightBird){
+	birdXTranslate-=0.3;
+	bird.pos.x = birdXTranslate;
+	if(bird.pos.x <= -15){
+		bird.rot.y = -bird.rot.y;
+		rightBird = true;
+	}
+}
+bird.pos.y = 13;
+bird.pos.z = 28;
+bird.scale = 0.03;
+bird.Draw();
+//////////bird2
+glEnable(GL_LIGHTING);
+ChangeLightColor(0.0f,0.0f,0.8f);
+bird2.rot.y = bird2Rotate;
+if(rightBird2){
+	bird2XTranslate+=0.15;
+	bird2.pos.x = bird2XTranslate;
+	if(bird2.pos.x >= 15){
+		bird2.rot.y = -bird2.rot.y;
+		rightBird2 = false;
+	}
+}
+if(!rightBird2){
+	bird2XTranslate-=0.15;
+	bird2.pos.x = bird2XTranslate;
+	if(bird2.pos.x <= -15){
+		bird2.rot.y = -bird2.rot.y;
+		rightBird2 = true;
+	}
+}
+bird2.pos.y = 15;
+bird2.pos.z = 22;
+bird2.scale = 0.03;
+bird2.Draw();
+
+
 
 
 ////sofas el gamb el lamp///
@@ -130,12 +227,12 @@ sofa.Draw();
 
 
 ////lamp next to the sofa
-ChangeLightColor(0.0f,0.0f,0.0f);
-lamp.pos.x = -1.65;
-lamp.pos.z = 4;
-lamp.pos.y=1;
-lamp.scale = 0.001;
-lamp.Draw();
+//ChangeLightColor(0.0f,0.0f,0.0f);
+//lamp.pos.x = -1.65;
+//lamp.pos.z = 4;
+//lamp.pos.y=1;
+//lamp.scale = 0.001;
+//lamp.Draw();
 
 ChangeLightColor(0.0f,0.0f,0.0f);
 tv.rot.y = -90;
@@ -169,18 +266,18 @@ bed.pos.z = 4;
 bed.Draw();
 
 //CANDLE NEXT TO THE TV////////
-candle.scale = 0.01;
-candle.pos.y = 1;
-candle.pos.x = -3.5;
-candle.pos.z = -4.75;
-candle.Draw();
+//candle.scale = 0.01;
+//candle.pos.y = 1;
+//candle.pos.x = -3.5;
+//candle.pos.z = -4.75;
+//candle.Draw();
 
 ////////VASE NEXT TO THE BED ///////////
-vase.scale = 0.03;
-vase.pos.y=1;
-vase.pos.x = 4.75;
-vase.pos.z = 4;
-vase.Draw();
+//vase.scale = 0.03;
+//vase.pos.y=1;
+//vase.pos.x = 4.75;
+//vase.pos.z = 4;
+//vase.Draw();
 
 /*diningtable.pos.y = 1;
 diningtable.pos.x= -6.5;
@@ -192,7 +289,7 @@ glEnable(GL_LIGHTING);
 ChangeLightColor(0.0f,1.0f,1.0f);
 desk.pos.x = 0.65;
 desk.pos.z = 2;
-desk.pos.y=1;
+desk.pos.y=2;
 desk.rot.y=90.0f;
 desk.scale=0.02;
 desk.Draw();
@@ -201,8 +298,8 @@ ChangeLightColor(1.0f,1,0);
 car.pos.x= 18;
 car.pos.z=10;
 car.pos.y=2;
-car.scale=0.001;
-//car.rot.y=90;
+car.scale=0.1;
+car.rot.y=90;
 car.Draw();
 
 //GLfloat shininess [] = {50};
@@ -214,13 +311,13 @@ piano.pos.y = 1;
 piano.scale=0.003;
 piano.Draw();
 
-ChangeLightColor(0.0f,0.0f,0.0f);
-guitar.pos.x= -8;
-guitar.pos.z=0;
-guitar.pos.y = 1;
-guitar.rot.x =-90 ;
-guitar.scale=0.003;
-guitar.Draw();
+//ChangeLightColor(0.0f,0.0f,0.0f);
+//guitar.pos.x= -8;
+//guitar.pos.z=0;
+//guitar.pos.y = 1;
+//guitar.rot.x =-90 ;
+//guitar.scale=0.003;
+//guitar.Draw();
 
 ChangeLightColor(0.0f,1.0f,0.0f);
 glEnable(GL_LIGHTING);
@@ -314,28 +411,7 @@ cameraLocation.z -= lineOfSight.z * fraction;
 
 break;
 
-case GLUT_KEY_F1:
-
-cameraLocation.y -= 0.5;
-
-break;
-
-case GLUT_KEY_F2:
-
-cameraLocation.y += 0.5;
-
-break;
-
-case GLUT_KEY_F3:
-
-	viewAngle -= 0.05;
-
-break;
-
-case GLUT_KEY_F4:
-
-	viewAngle += 0.05;
-
+default:
 break;
 
 }
@@ -376,6 +452,34 @@ void CreateLightSource()
 	//GLfloat light_position[] = {2.0f, 2.0f, 2.0f, 1.0f};
 	GLfloat light_position[] = {cameraLocation.x, cameraLocation.y, cameraLocation.z, 1.0f};
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+}
+
+void MyKeyboard(unsigned char thekey,int mouseX,int mouseY)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+    
+    switch (thekey) {
+        case 'q':
+			cameraLocation.y += 0.5;
+            break;
+
+		case 'a':
+			cameraLocation.y -= 0.5;
+            break;
+
+        case 'w':
+			viewAngle -= 0.05;
+            break;
+
+		case 's':
+			viewAngle += 0.05;
+            break;           
+        default:
+            break;
+    }
+    
+    
+    
 }
 
 void main(int argc, char **argv)
@@ -430,7 +534,7 @@ cameraLocation.x = 0.0;
 
 cameraLocation.y =5.0;
 
-cameraLocation.z = 35.0;
+cameraLocation.z = 75.0;
 
 lineOfSight.x = 0.0f;
 
@@ -448,13 +552,13 @@ glEnable(GL_DEPTH_TEST);
 CreateLightSource();
 glClearColor(0.9,0.9,0.9,0.0);
 
-
+glutKeyboardFunc(MyKeyboard);
 
 house.Load("House3.3DS");
 tree.Load("elm.3ds");
 //sofa.Load("Car Lamborghini gallardo 2005 N240211.3DS");
 //billiard.Load("billiard.3ds");
-car.Load("Car saturn ls N300314.3DS");
+car.Load("Car Lamborghini gallardo 2005 N240211.3DS");
 //lamp.Load("lamp2.3DS");
 //desk.Load("desk.3ds");
 //candle.Load("candlestick.3DS");
@@ -466,14 +570,13 @@ car.Load("Car saturn ls N300314.3DS");
 grass.Load("Grass06.3DS");
 //tvtable.Load("reciever.3DS");
 //vase.Load("vase.3DS");
-
-wheel.Load("wheel.3ds");
-boots.Load("boots.3ds");
-ball.Load("ball.3ds");
-snooker.Load("snooker.3ds");
-swimmingpool.Load("swimmingpool.3ds");
-frog.Load("frog.3ds");
-motorcycle.Load("motorcycle.3ds");
+bench.Load("bench.3ds");
+ball.Load("soccer_ball.3ds");
+trash.Load("garbagecan.3ds");
+cone.Load("TrafficCone.3DS");
+cone2.Load("TrafficCone.3DS");
+bird.Load("bird.3ds");
+bird2.Load("bird.3ds");
 
 glMatrixMode(GL_MODELVIEW);
 glutMainLoop();
